@@ -18,7 +18,7 @@ public class RestAreaDetailResponseDto {
     private String address;
     private BigDecimal latitude;
     private BigDecimal longitude;
-    private List<String> facilities;
+    private List<String> amenities;
     private List<FoodMenuDto> foodMenus; // Entity가 아닌 DTO 리스트
 
     // 엔티티를 DTO로 변환하는 생성자
@@ -29,7 +29,7 @@ public class RestAreaDetailResponseDto {
         this.address = restArea.getAddress();
         this.latitude = restArea.getLatitude();
         this.longitude = restArea.getLongitude();
-        this.facilities = restArea.getFacilities();
+        this.amenities = restArea.getFacilities();
 
         // Entity 리스트(restArea.getFoodMenus())를
         // DTO 리스트(foodMenus)로 변환합니다.

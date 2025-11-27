@@ -13,7 +13,8 @@ public class RestAreaListResponseDto {
     private String name;
     private String routeName;
     private String address;
-    private List<String> facilities;
+    private String direction;
+    private List<String> amenities;
 
     // Entity를 이 DTO로 변환하는 생성자
     public RestAreaListResponseDto(RestArea restArea) {
@@ -21,6 +22,7 @@ public class RestAreaListResponseDto {
         this.name = restArea.getName();
         this.routeName = restArea.getRouteName();
         this.address = restArea.getAddress();
-        this.facilities = restArea.getFacilities();
+        this.direction = restArea.getDirection();
+        this.amenities = restArea.getFacilities();
     }
 }

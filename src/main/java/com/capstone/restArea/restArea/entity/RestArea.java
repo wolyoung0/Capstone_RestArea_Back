@@ -36,6 +36,9 @@ public class RestArea extends BaseEntity {
     @Column(name = "address", length = 255)
     private String address;
 
+    @Column(name = "direction", length = 50)
+    private String direction;
+
     @Column(precision = 10, scale = 7)
     private BigDecimal latitude;
 
