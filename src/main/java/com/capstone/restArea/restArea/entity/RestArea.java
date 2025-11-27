@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,11 +36,14 @@ public class RestArea extends BaseEntity {
     @Column(name = "address", length = 255)
     private String address;
 
-    @Column(precision = 10, scale = 7)
-    private Double latitude;
+    @Column(name = "direction", length = 50)
+    private String direction;
 
     @Column(precision = 10, scale = 7)
-    private Double longitude;
+    private BigDecimal latitude;
+
+    @Column(precision = 10, scale = 7)
+    private BigDecimal longitude;
 
     // ----- 신규 추가된 컬럼 및 관계 -----
 
