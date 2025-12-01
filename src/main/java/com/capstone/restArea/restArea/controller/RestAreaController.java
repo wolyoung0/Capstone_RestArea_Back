@@ -1,36 +1,35 @@
 package com.capstone.restArea.restArea.controller;
 
+import com.capstone.restArea.restArea.dto.PolylineRequestDto;
+import com.capstone.restArea.restArea.dto.RestAreaResponseDto;
 import com.capstone.restArea.restArea.entity.RestArea;
 import com.capstone.restArea.restArea.service.RestAreaService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/rest-areas")
+@RequiredArgsConstructor
 public class RestAreaController {
 
     private final RestAreaService restAreaService;
 
-    @Autowired
-    public RestAreaController(RestAreaService restAreaService) {
-        this.restAreaService = restAreaService;
+    @GetMapping("/route")
+    public ResponseEntity<String> getRoute(@RequestParam String origin, @RequestParam String destination) {
+
+        // Service에서 길찾기 APi 호출하고 결과 반환.
+        String directionsResult = restAreaService.getDirection(origin, destination);
+
+        return ResponseEntity.ok(directionsResult);
     }
 
-    @GetMapping
-    public ResponseEntity<List<RestArea>> getAllRestAreas() {
-        List<RestArea> restAreas = restAreaService.findAll();
-        return ResponseEntity.ok(restAreas);
-    }
+    @PostMapping("/route-polyline")
+    public ResponseEntity<List<RestAreaResponseDto>> getRestAreasOnRoute(@RequestBody PolylineRequestDto polylineRequestDto) {
 
-    @GetMapping("/{id}")
-    public ResponseEntity<RestArea> getRestAreaById(@PathVariable Long id) {
-        RestArea restArea = restAreaService.findById(id);
-        return ResponseEntity.ok(restArea);
+        List<RestAreaResponseDto> restArea = restAreaService.findRestAreasOnRoute(polylineRequestDto.getPolyline(), polylineRequestDto.getRouteNames());
+        return ResponseEntity.ok((restArea));
     }
 }
