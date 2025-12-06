@@ -6,7 +6,7 @@ plugins {
 
 group = 'com.capstone'
 version = '0.0.1-SNAPSHOT'
-description = 'Inhatc Capstone Team Project - Reat Area'
+description = 'Capstone Team Project - Rest Area'
 
 java {
 	toolchain {

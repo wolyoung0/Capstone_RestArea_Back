@@ -18,9 +18,11 @@ public class RestAreaResponseDto {
     private BigDecimal latitude;
     private BigDecimal longitude;
     private List<String> facilities;
+    private String address;
 
     // 메뉴 목록을 포함하되, DTO 리스트로 포함합니다.
     private List<FoodMenuResponseDto> foodMenus;
     private String bestMenuName;
+    private Integer bestMenuPrice;
     private String recommendationReason;
 }

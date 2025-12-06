@@ -23,7 +23,7 @@ public interface RestAreaRepository extends JpaRepository<RestArea, Long> {
                     "WHERE ST_DWithin(" +
                     "    ST_SetSRID(ST_MakePoint(r.longitude, r.latitude), 4326)::geography, " + // 1. 휴게소 위치 (geography로 캐스팅)
                     "    ST_GeomFromText(:polylineWKT, 4326)::geography, " +    // 2. 경로선 (geography로 캐스팅)
-                    "    100 " +                                               // 3. 거리 (1000 미터 = 1km)
+                    "    500 " +                                               // 3. 거리 (1000 미터 = 1km)
                     ") " +
 //                    "AND r.route_name IN (:routeNames) " +
                     "AND (r.direction = :direction OR r.direction = '양방향')",
